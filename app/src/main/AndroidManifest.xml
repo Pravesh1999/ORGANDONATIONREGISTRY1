@@ -30,6 +30,12 @@
             android:parentActivityName=".HospitalLogin"></activity>
         <activity android:name=".DonorDetails">
         </activity>
+        <activity android:name=".NotifyOPO"></activity>
+        <activity android:name=".HospitalOrder1"></activity>
+        <activity android:name=".AboutUs"></activity>
+        <activity android:name=".ContactUs"></activity>
+        <activity android:name=".FinalRegistry"></activity>
+        <activity android:name=".HospitalView"></activity>
 
     </application>
 

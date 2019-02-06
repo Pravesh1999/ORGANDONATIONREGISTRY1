@@ -1,5 +1,6 @@
 package com.example.prave.organdonationregistry;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -24,5 +25,11 @@ public class DonorDetails extends AppCompatActivity {
 
     }
 
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent i=new Intent(getApplicationContext(),Login.class);
+        startActivity(i);
+        setContentView(R.layout.login_screen);
+    }
 }

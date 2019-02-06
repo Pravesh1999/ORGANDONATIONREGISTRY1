@@ -9,10 +9,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-    @Override
-    public void onBackPressed() {
 
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
         CardView factsButton;
         CardView hospitalButton;
         CardView faq;
+        CardView AboutUS;
+        CardView Contact;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //when clicked on register button
@@ -29,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
         factsButton=findViewById(R.id.factsButton);
         hospitalButton=findViewById(R.id.hospitalButton);
         faq=findViewById(R.id.faq);
+        AboutUS=findViewById(R.id.AboutUS);
+        Contact=findViewById(R.id.contactUs);
 
 
 
@@ -63,6 +64,22 @@ public class MainActivity extends AppCompatActivity {
                 Intent d=new Intent(getApplicationContext(),FAQ.class);
                 startActivity(d);
                 setContentView(R.layout.organ_faq);
+            }
+        });
+        AboutUS.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent e=new Intent(getApplicationContext(),AboutUs.class);
+                startActivity(e);
+                setContentView(R.layout.about_us);
+            }
+        });
+        Contact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent x=new Intent(getApplicationContext(),ContactUs.class);
+                startActivity(x);
+                setContentView(R.layout.contact_us);
             }
         });
 

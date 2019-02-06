@@ -12,6 +12,7 @@ import android.widget.Toast;
 public class HospitalLogin extends AppCompatActivity {
     CardView hosLogin;
     CardView registerScreen;
+    CardView hos_view;
     EditText hosuname;
     EditText hospwd;
     int counter = 3;
@@ -25,6 +26,7 @@ public class HospitalLogin extends AppCompatActivity {
         hosLogin=findViewById(R.id.hos_login);
         registerScreen=findViewById(R.id.register_screen);
         hosuname=findViewById(R.id.hosuname);
+
         hospwd=findViewById(R.id.hospwd);
         hosLogin=findViewById(R.id.hos_login);
         hosLogin.setOnClickListener(new View.OnClickListener() {
@@ -54,6 +56,7 @@ public class HospitalLogin extends AppCompatActivity {
                 setContentView(R.layout.layout);
             }
         });
+
 
     }
 

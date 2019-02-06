@@ -11,8 +11,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,6 +22,7 @@ import android.widget.Toast;
 import java.util.Random;
 
 public class DonorRegistry extends AppCompatActivity {
+    public Spinner spinner;
     EditText firstName;
     EditText lastName;
     EditText gender;
@@ -41,6 +44,8 @@ public class DonorRegistry extends AppCompatActivity {
     String Email;
     String PhoneNumber;
     String UserName;
+    String Spinner;
+    private static final String[] paths = {"Kidney", "Liver", "Lungs", "Tissues","Blood and platelets","Hands and face","Corneas","Heart"};
     public static final String TABLE_DONOR="donor";
     public static final String COLUMN_ID="_id";
     public static final String COLUMN_FNAME="FNAME";
@@ -87,7 +92,10 @@ public class DonorRegistry extends AppCompatActivity {
         registration=findViewById(R.id.donorReg);
         aSwitch=findViewById(R.id.switch3);
         userName=findViewById(R.id.userName);
-        sample=findViewById(R.id.sample);
+        spinner = (Spinner) findViewById(R.id.spinner4);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(DonorRegistry.this, android.R.layout.simple_spinner_item, paths);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
 
         registration.setOnClickListener(new View.OnClickListener() {
 
@@ -99,6 +107,7 @@ public class DonorRegistry extends AppCompatActivity {
 
                 if(checkDataEntered()) {
 
+                    Intent i=new Intent(getApplicationContext(),Login.class);
                     Namefirst = firstName.getText().toString();
                     Namelast = lastName.getText().toString();
                     Gender = gender.getText().toString();
@@ -107,8 +116,19 @@ public class DonorRegistry extends AppCompatActivity {
                     Email = email.getText().toString();
                     PhoneNumber = phoneNumber.getText().toString();
                     UserName = userName.getText().toString();
-
-                    handler.addDonor(Namefirst, Namelast, Gender, Address, City, PhoneNumber, Email, UserName);
+                    Spinner=spinner.getSelectedItem().toString();
+                    Bundle b=new Bundle();
+                    b.putString("FirstName",Namefirst);
+                    b.putString("LastName",Namelast);
+                    b.putString("Gender",Gender);
+                    b.putString("Address",Address);
+                    b.putString("City",City);
+                    b.putString("Email",Email);
+                    b.putString("PhoneNumber",PhoneNumber);
+                    b.putString("UserName",UserName);
+                    handler.addDonor(Namefirst, Namelast, Gender, Address, City, PhoneNumber, Email, UserName,Spinner);
+                    startActivity(i);
+                    setContentView(R.layout.login_screen);
 
 
 
